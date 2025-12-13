@@ -7,7 +7,6 @@
   color: white;
 }
 
-/* Left section */
 .navbar-left {
   display: flex;
   align-items: center;
@@ -23,7 +22,7 @@
   font-weight: bold;
 }
 
-/* Right section */
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -32,7 +31,7 @@
   padding: 0;
 }
 
-/* 🔑 Make links clickable */
+
 .nav-link {
   display: flex;
   align-items: center;
@@ -44,13 +43,13 @@
   cursor: pointer;
 }
 
-/* Active link highlight */
+
 .nav-link.active {
   border-bottom: 2px solid white;
   padding-bottom: 4px;
 }
 
-/* Hover effect */
+
 .nav-link:hover {
   opacity: 0.85;
 }
