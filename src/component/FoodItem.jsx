@@ -1,34 +1,27 @@
 import { useState } from "react";
-import "./FoodItem.css";
 
-function FoodItem({ name, price, addToCart }) {
+function FoodItem({ name, price }) {
   const [quantity, setQuantity] = useState(1);
-  const [clicked, setClicked] = useState(false);
 
-  const handleAdd = () => {
-    setClicked(true);
-    addToCart({ name, price, quantity });
-
-    setTimeout(() => setClicked(false), 400);
+  const handleAddToCart = () => {
+    alert(`${quantity} x ${name} added to cart. Total: ₹${price * quantity}`);
   };
 
   return (
-    <div className="food-card">
-      <h3 className="food-name">{name}</h3>
-      <p className="food-price">₹{price}</p>
+    <div>
+      <h3>{name}</h3>
+      <p>Price: ₹{price}</p>
 
-      <div className="quantity-controls">
-        <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>−</button>
+      {/* Quantity selector */}
+      <div>
+        <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>-</button>
         <span>{quantity}</span>
         <button onClick={() => setQuantity(quantity + 1)}>+</button>
       </div>
 
-      <button
-        className={`add-cart-btn ${clicked ? "sparkle" : ""}`}
-        onClick={handleAdd}
-      >
-        Add to Cart
-      </button>
+      <p>Total: ₹{price * quantity}</p>
+
+      <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
 }
