@@ -7,9 +7,9 @@ import {
 } from "react-icons/fa";
 import "./Navbar.css";
 
-function Navbar({cartCount}) {
+function Navbar() {
   // Dummy cart count (later we will make it dynamic)
-  
+  const cartCount = 0;
 
   return (
     <nav className="navbar">
