@@ -1,43 +1,52 @@
-import { NavLink } from "react-router-dom";
-import {
-  FaHamburger,
-  FaHome,
-  FaList,
-  FaShoppingCart,
-} from "react-icons/fa";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes, FaSearch, FaUser } from "react-icons/fa";
 import "./Navbar.css";
 
-function Navbar({cartCount}) {
-  // Dummy cart count (later we will make it dynamic)
-  
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        <FaHamburger className="logo-icon" />
-        <span className="logo-text">GrafixUI</span>
+      {/* Logo */}
+      <div className="logo">
+        <Link to="/">GrafixUI</Link>
       </div>
-      <ul className="nav-links">
-        <li>
-          <NavLink to="/" end className="nav-link">
-            <FaHome /> Home
-          </NavLink>
-        </li>
 
-        <li>
-          <NavLink to="/menu" className="nav-link">
-            <FaList /> Menu
-          </NavLink>
-        </li>
+      {/* Search Bar */}
+      <div className="search-box">
+        <FaSearch className="search-icon" />
+        <input type="text" placeholder="Search food..." />
+      </div>
 
+      {/* Nav Links */}
+      <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
         <li>
-          <NavLink to="/cart" className="nav-link">
-            <FaShoppingCart /> Cart ({cartCount})
-          </NavLink>
+          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
         </li>
+        <li>
+          <Link to="/menu" onClick={() => setMenuOpen(false)}>Menu</Link>
+        </li>
+        <li>
+          <Link to="/cart" onClick={() => setMenuOpen(false)}>Cart</Link>
+        </li>
+        <div className="auth-buttons">
+  <Link to="/login" className="login-btn">
+    Login
+  </Link>
+
+  <Link to="/signup" className="signup-btn">
+    Sign Up
+  </Link>
+</div>
       </ul>
+
+      {/* Hamburger */}
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

@@ -2,6 +2,7 @@ import React from "react";
 import FoodItem from "../component/FoodItem";
 import "./menu.css";
 
+
 function Menu({ addToCart }) {
   const menuItems = [
     { name: "Spicy Chicken Burger", price: 150 },
