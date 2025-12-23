@@ -1,36 +1,54 @@
 import React, { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import "./Cart.css";
-import { CartContext } from "../../pages/CartContext";
 
-const Cart = () => {
+function Cart() {
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
 
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
-    <div className="cart-container">
-      <h2>Your Cart</h2>
+    <div className="cart-page">
+      <h1 className="cart-title">Your Cart</h1>
+
       {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="cart-empty">Your cart is empty 🛒</p>
       ) : (
         <>
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.id} className="cart-item">
-                <span>{item.name}</span>
-                <span>${item.price.toFixed(2)}</span>
-                <button onClick={() => removeFromCart(item.id)}>Remove</button>
-              </li>
+          <div className="cart-list">
+            {cartItems.map((item, index) => (
+              <div className="cart-item" key={index}>
+                <div>
+                  <p className="cart-item-name">{item.name}</p>
+                  <p className="cart-item-price">
+                    ₹{item.price} × {item.quantity}
+                  </p>
+                </div>
+
+                <button
+                  className="remove-btn"
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  Remove
+                </button>
+              </div>
             ))}
-          </ul>
-          <h3>Total: ${totalPrice.toFixed(2)}</h3>
-          <button className="clear-btn" onClick={clearCart}>
-            Clear Cart
-          </button>
+          </div>
+
+          <div className="cart-total">
+            Total: ₹{totalPrice.toFixed(2)}
+            <br />
+            <button className="clear-btn" onClick={clearCart}>
+              Clear Cart
+            </button>
+          </div>
         </>
       )}
     </div>
   );
-};
+}
 
 export default Cart;

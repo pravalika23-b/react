@@ -1,36 +1,35 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import "./FoodItem.css";
 
-function FoodItem({ name, price, addToCart }) {
+function FoodItem({ name, price }) {
+  const { addToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
-  const [clicked, setClicked] = useState(false);
 
   const handleAdd = () => {
-    setClicked(true);
-    addToCart({ name, price, quantity });
-
-    setTimeout(() => setClicked(false), 400);
+    addToCart({
+      id: Date.now(),
+      name,
+      price,
+      quantity,
+    });
   };
 
   return (
     <div className="food-card">
-      <h3 className="food-name">{name}</h3>
-      <p className="food-price">₹{price}</p>
+      <h3>{name}</h3>
+      <p>₹{price}</p>
 
-      <div className="quantity-controls">
-        <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>−</button>
+      <div>
+        <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
         <span>{quantity}</span>
         <button onClick={() => setQuantity(quantity + 1)}>+</button>
       </div>
 
-      <button
-        className={`add-cart-btn ${clicked ? "sparkle" : ""}`}
-        onClick={handleAdd}
-      >
-        Add to Cart
-      </button>
+      <button onClick={handleAdd}>Add to Cart</button>
     </div>
   );
 }
 
 export default FoodItem;
+
