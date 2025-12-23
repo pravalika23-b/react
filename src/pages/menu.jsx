@@ -1,28 +1,14 @@
-import React from "react";
-import FoodItem from "../component/FoodItem";
-import "./menu.css";
+import FoodItem from "../components/FoodItem";
 
-
-function Menu({ addToCart }) {
-  const menuItems = [
-    { name: "Spicy Chicken Burger", price: 150 },
-    { name: "Veggie Pizza", price: 250 },
-    { name: "Chocolate Cake", price: 120 },
-  ];
-
+function Menu() {
   return (
-    <div className="menu-container">
-      <h1>Our Menu</h1>
-      <div className="menu-items-grid">
-        {menuItems.map((item) => (
-          <FoodItem
-            key={item.name}
-            name={item.name}
-            price={item.price}
-            addToCart={addToCart}
-          />
-        ))}
-      </div>
+    <div>
+      <h1>Menu</h1>
+      <hr />
+
+      <FoodItem name="Pizza" price={199} />
+      <FoodItem name="Burger" price={99} />
+      <FoodItem name="Biryani" price={249} />
     </div>
   );
 }
