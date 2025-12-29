@@ -1,14 +1,36 @@
-export default function Payment() {
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
+function Payment() {
+  const { cartItems, clearCart } = useContext(CartContext);
+
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  const handlePayment = () => {
+    alert("Payment successful ✅");
+    clearCart();
+  };
+
   return (
-    <div style={{ textAlign: "center", marginTop: "40px" }}>
-      <h1>Payment Page</h1>
+    <div style={{ padding: "40px", textAlign: "center" }}>
+      <h1>Payment</h1>
 
-      <input placeholder="Name on Card" /><br /><br />
-      <input placeholder="Card Number" /><br /><br />
-      <input placeholder="Expiry Date" /><br /><br />
-      <input placeholder="CVV" /><br /><br />
-
-      <button>Pay Now</button>
+      {cartItems.length === 0 ? (
+        <p>No items in cart</p>
+      ) : (
+        <>
+          <p>Total Amount: ₹{total}</p>
+          <button onClick={handlePayment}>
+            Pay Now
+          </button>
+        </>
+      )}
     </div>
   );
 }
+
+export default Payment;
+
