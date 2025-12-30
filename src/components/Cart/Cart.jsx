@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
 
@@ -11,6 +12,8 @@ const Cart = () => {
     clearCart,
     totalPrice,
   } = useContext(CartContext);
+
+  const navigate = useNavigate(); 
 
   return (
     <div className="cart-container">
@@ -45,6 +48,14 @@ const Cart = () => {
           <h3>Total: ₹{totalPrice}</h3>
 
           <button onClick={clearCart}>Clear Cart</button>
+
+          {/* ✅ CONFIRM ORDER BUTTON */}
+          <button
+            className="confirm-btn"
+            onClick={() => navigate("/track-order")}
+          >
+            Confirm Order
+          </button>
         </>
       )}
     </div>
