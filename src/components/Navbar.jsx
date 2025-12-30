@@ -1,43 +1,66 @@
-import { NavLink } from "react-router-dom";
-import {
-  FaHamburger,
-  FaHome,
-  FaList,
-  FaShoppingCart,
-} from "react-icons/fa";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import "./Navbar.css";
+import { SearchContext } from "../context/SearchContext";
 
-function Navbar() {
-  // Dummy cart count (later we will make it dynamic)
-  const cartCount = 0;
+
+
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+const { setSearchTerm } = React.useContext(SearchContext);
 
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        <FaHamburger className="logo-icon" />
-        <span className="logo-text">GrafixUI</span>
+      {/* Logo */}
+      <div className="logo">
+        <Link to="/">GrafixUI</Link>
       </div>
-      <ul className="nav-links">
-        <li>
-          <NavLink to="/" end className="nav-link">
-            <FaHome /> Home
-          </NavLink>
-        </li>
 
-        <li>
-          <NavLink to="/menu" className="nav-link">
-            <FaList /> Menu
-          </NavLink>
-        </li>
+      {/* Search Bar */}
+      <div className="search-box">
+        <FaSearch className="search-icon" />
+        <input
+  type="text"
+  placeholder="Search food..."
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
 
+      </div>
+
+      {/* Nav Links */}
+      <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
         <li>
-          <NavLink to="/cart" className="nav-link">
-            <FaShoppingCart /> Cart ({cartCount})
-          </NavLink>
+          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
         </li>
+        <li>
+          <Link to="/menu" onClick={() => setMenuOpen(false)}>Menu</Link>
+        </li>
+        <li>
+          <Link to="/cart" onClick={() => setMenuOpen(false)}>Cart</Link>
+        </li>
+        <li><Link to="/Orders" onClick={() => setMenuOpen(false)}>Orders</Link>
+        </li>
+        <div className="auth-buttons">
+  <Link to="/login" className="login-btn">
+    Login
+  </Link>
+
+  <Link to="/signup" className="signup-btn">
+    Sign Up
+    </Link>
+  
+  
+
+</div>
       </ul>
+
+      {/* Hamburger */}
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

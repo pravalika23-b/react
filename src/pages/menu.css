@@ -1,0 +1,103 @@
+/* Page background */
+.menu-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #fff5ec, #ffe8d6);
+}
+
+/* Title */
+.menu-title {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 5px;
+  color: #2d2d2d;
+}
+
+.menu-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* Category heading */
+.menu-category {
+  margin: 40px 0 20px;
+  font-size: 26px;
+  text-align: center;
+  color: #333;
+}
+
+/* CENTER items */
+.menu-list {
+  display: flex;
+  justify-content: center;   /* 🔥 THIS centers items */
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* Each Food Card (affects FoodItem) */
+.food-card {
+  background: #ffffff;
+  width: 240px;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Food name */
+.food-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Price */
+.food-price {
+  font-size: 18px;
+  color: #e63946;
+  margin-bottom: 12px;
+}
+
+/* Quantity buttons */
+.quantity-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.quantity-controls button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #eee;
+  font-size: 18px;
+}
+
+/* Add to cart button */
+.add-cart-btn {
+  background: #ff7a18;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+}
+
+.add-cart-btn:hover {
+  background: #e66a10;
+}
+
