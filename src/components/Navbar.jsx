@@ -1,58 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import "./Navbar.css";
 import { SearchContext } from "../context/SearchContext";
 
-
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-const { setSearchTerm } = React.useContext(SearchContext);
+  const { setSearchTerm } = useContext(SearchContext);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <nav className="navbar">
       {/* Logo */}
       <div className="logo">
-        <Link to="/">GrafixUI</Link>
+        <Link to="/" onClick={closeMenu}>GrafixUI</Link>
       </div>
 
-      {/* Search Bar */}
+      {/* Search bar (desktop only) */}
       <div className="search-box">
         <FaSearch className="search-icon" />
         <input
-  type="text"
-  placeholder="Search food..."
-  onChange={(e) => setSearchTerm(e.target.value)}
-/>
-
+          type="text"
+          placeholder="Search food..."
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
 
-      {/* Nav Links */}
-      <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+      {/* Menu */}
+      <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
         <li>
-          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-        </li>
-        <li>
-          <Link to="/menu" onClick={() => setMenuOpen(false)}>Menu</Link>
+          <Link to="/" onClick={closeMenu}>Home</Link>
         </li>
         <li>
-          <Link to="/cart" onClick={() => setMenuOpen(false)}>Cart</Link>
+          <Link to="/menu" onClick={closeMenu}>Menu</Link>
         </li>
-        <li><Link to="/Orders" onClick={() => setMenuOpen(false)}>Orders</Link>
+        <li>
+          <Link to="/cart" onClick={closeMenu}>Cart</Link>
         </li>
+        <li>
+          <Link to="/orders" onClick={closeMenu}>Orders</Link>
+        </li>
+
         <div className="auth-buttons">
-  <Link to="/login" className="login-btn">
-    Login
-  </Link>
-
-  <Link to="/signup" className="signup-btn">
-    Sign Up
-    </Link>
-  
-  
-
-</div>
+          <Link to="/login" className="login-btn" onClick={closeMenu}>
+            Login
+          </Link>
+          <Link to="/signup" className="signup-btn" onClick={closeMenu}>
+            Sign Up
+          </Link>
+        </div>
       </ul>
 
       {/* Hamburger */}

@@ -1,56 +1,65 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { FaTimes, FaEnvelope } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [phone, setPhone] = useState("");
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (!savedUser) {
-      alert("Account not available. Please sign up first.");
+  const handleOTP = () => {
+    if (!phone) {
+      alert("Please enter phone number");
       return;
     }
-
-    if (email === savedUser.email && password === savedUser.password) {
-      alert("Login successful!");
-      navigate("/");
-    } else {
-      alert("Invalid credentials");
-    }
+    alert("OTP sent (UI demo only)");
   };
 
   return (
-    <div className="login-page">
-      <div className="login-card">
-        <h2>Login</h2>
+    <div className="login-overlay">
+      <div className="login-modal">
+        {/* Header */}
+        <div className="login-header">
+          <h2>Login</h2>
+          <FaTimes className="close-icon" onClick={() => navigate("/")} />
+        </div>
 
-        <form className="login-form" onSubmit={handleLogin}>
+        {/* Phone Input */}
+        <div className="phone-box">
+          <span className="country-code">🇮🇳 +91</span>
           <input
-            type="email"
-            placeholder="Email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
+            type="tel"
+            placeholder="Phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
           />
+        </div>
 
-          <input
-            type="password"
-            placeholder="Password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        {/* OTP Button */}
+        <button className="primary-btn" onClick={handleOTP}>
+          Send One Time Password
+        </button>
 
-          <button type="submit">Login</button>
-        </form>
+        <div className="divider">
+          <span>or</span>
+        </div>
 
-        <p>
-          Don’t have an account? <Link to="/signup">Sign up</Link>
+        {/* Email Login */}
+        <button className="secondary-btn">
+          <FaEnvelope />
+          Continue with Email
+        </button>
+
+        {/* Google Login */}
+        <button className="secondary-btn">
+          <FcGoogle />
+          Sign in with Google
+        </button>
+
+        {/* Footer */}
+        <p className="signup-text">
+          New to GrafixUI? <Link to="/signup">Create account</Link>
         </p>
       </div>
     </div>

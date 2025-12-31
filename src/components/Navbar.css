@@ -1,9 +1,9 @@
-/* Navbar container */
+/* ---------------- NAVBAR BASE ---------------- */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 14px 22px;
   background: linear-gradient(90deg, #ff512f, #dd2476);
   color: #fff;
   position: sticky;
@@ -15,18 +15,18 @@
 .logo a {
   color: #fff;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
 }
 
-/* Search box */
+/* ---------------- SEARCH ---------------- */
 .search-box {
   display: flex;
   align-items: center;
   background: #fff;
-  padding: 5px 10px;
-  border-radius: 20px;
-  width: 250px;
+  padding: 6px 12px;
+  border-radius: 22px;
+  width: 260px;
 }
 
 .search-box input {
@@ -34,125 +34,143 @@
   outline: none;
   margin-left: 8px;
   width: 100%;
+  font-size: 14px;
 }
 
 .search-icon {
   color: #dd2476;
 }
 
-/* Nav links */
+/* ---------------- NAV LINKS ---------------- */
 .nav-links {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 20px;
+  gap: 22px;
 }
 
 .nav-links li a {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
-  transition: 0.3s;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
 }
 
 .nav-links li a:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
+/* ---------------- AUTH BUTTONS ---------------- */
 .auth-buttons {
   display: flex;
-  align-items: center;
   gap: 12px;
 }
 
-/* Login button (outline) */
+/* Login */
 .login-btn {
   padding: 8px 18px;
-
   border: 2px solid #fff;
   border-radius: 20px;
-
   background: transparent;
-  color: white;
-
+  color: #fff;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-
   transition: all 0.3s ease;
 }
 
 .login-btn:hover {
-  background: white;
+  background: #fff;
   color: #dd2476;
 }
 
-/* Sign up button (filled) */
+/* Signup */
 .signup-btn {
   padding: 8px 18px;
-
-  background: white;
+  background: #fff;
   color: #dd2476;
-
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
-
   text-decoration: none;
-  border: none;
-
   transition: all 0.3s ease;
 }
 
 .signup-btn:hover {
-  background: #ffe6ef;
+  background: #ffe4ef;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .auth-buttons {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .login-btn,
-  .signup-btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-
-/* Hamburger */
+/* ---------------- HAMBURGER ---------------- */
 .hamburger {
   display: none;
   font-size: 22px;
   cursor: pointer;
 }
 
-/* Responsive styles */
+/* ---------------- MOBILE ---------------- */
 @media (max-width: 768px) {
   .search-box {
     display: none;
   }
 
-  .nav-links {
-    position: absolute;
-    top: 65px;
-    right: 0;
-    background: linear-gradient(180deg, #ff512f, #dd2476);
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    display: none;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
   .hamburger {
     display: block;
   }
+
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 0;
+    display: none;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.25s ease;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .login-btn,
+  .signup-btn {
+    width: 200px;
+    text-align: center;
+  }
+}
+
+/* ---------------- ANIMATION ---------------- */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nav-links li {
+  border-bottom: 1px solid #eee;
+}
+
+.nav-links li:last-child {
+  border-bottom: none;
 }

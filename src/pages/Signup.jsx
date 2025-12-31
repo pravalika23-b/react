@@ -1,63 +1,64 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 import "./Signup.css";
+import { FaGoogle } from "react-icons/fa";
 
 const Signup = () => {
   const navigate = useNavigate();
-
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: ""
-  });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const [checked, setChecked] = useState(false);
 
   const handleSignup = (e) => {
     e.preventDefault();
-
-    // Save user in localStorage
-    localStorage.setItem("user", JSON.stringify(form));
-
-    alert("Signup successful! Please login.");
+    alert("Signed up successfully!");
     navigate("/login");
   };
 
   return (
-    <div className="signup-page">
-      <div className="signup-card">
-        <h2>Create Account ✨</h2>
+    <div className="signup-overlay">
+      <div className="signup-modal">
+        <div className="signup-header">
+          <h2>Signup</h2>
+          <FaTimes className="close" onClick={() => navigate("/")} />
+        </div>
 
-        <form className="signup-form" onSubmit={handleSignup}>
-          <input
-            name="name"
-            placeholder="Full Name"
-            required
-            onChange={handleChange}
-          />
+        <form onSubmit={handleSignup}>
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email" required />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            onChange={handleChange}
-          />
+          <label className="terms">
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={() => setChecked(!checked)}
+              required
+            />
+            <span>
+              I agree to GrafixUI's{" "}
+              <span className="link">Terms of Service</span>,{" "}
+              <span className="link">Privacy Policy</span> and{" "}
+              <span className="link">Content Policies</span>
+            </span>
+          </label>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-            onChange={handleChange}
-          />
-
-          <button type="submit">Sign Up</button>
+          <button
+            className={`primary-btn ${!checked ? "disabled" : ""}`}
+            disabled={!checked}
+          >
+            Create account
+          </button>
         </form>
 
-        <p>
+        <div className="divider">
+          <span>or</span>
+        </div>
+
+        <button className="google-btn">
+          <FaGoogle className="google-icon" />
+          Sign in with Google
+        </button>
+
+        <p className="login-text">
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
