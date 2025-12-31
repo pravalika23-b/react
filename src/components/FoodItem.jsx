@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import "./FoodItem.css";
 
-function FoodItem({ name, price }) {
+function FoodItem({ name, price, restaurant }) {
   const { addToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
 
@@ -12,8 +12,10 @@ function FoodItem({ name, price }) {
       name,
       price,
       quantity,
+      restaurant,
     });
   };
+
 
   return (
     <div className="food-card">

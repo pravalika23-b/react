@@ -1,0 +1,59 @@
+.payment-page {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9fafb;
+}
+
+.payment-card {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.payment-card h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bill-row,
+.bill-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.bill-total {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.discount {
+  color: #16a34a;
+}
+
+.pay-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 16px;
+  background: #ff5a5f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pay-btn:hover {
+  background: #e0484d;
+}
+
+.empty-text {
+  text-align: center;
+  color: #777;
+}

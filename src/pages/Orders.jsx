@@ -9,16 +9,20 @@ function Orders() {
       <h1 className="orders-title">My Orders</h1>
 
       {orders.length === 0 ? (
-        <p className="no-orders">No orders yet 🍽️</p>
+        <p className="orders-empty">No orders yet 🍽️</p>
       ) : (
         <div className="orders-list">
           {orders.map((order) => (
-            <div key={order.id} className="order-card">
-              <h3>Order on {order.date}</h3>
+            <div className="order-card" key={order.id}>
+              <h3 className="restaurant-name">
+                🍴 {order.restaurant || "Unknown Restaurant"}
+              </h3>
+
+              <p className="order-date">📅 {order.date}</p>
 
               <ul>
-                {order.items.map((item, index) => (
-                  <li key={index}>
+                {order.items.map((item, i) => (
+                  <li key={i}>
                     {item.name} × {item.quantity}
                   </li>
                 ))}

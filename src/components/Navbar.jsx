@@ -32,9 +32,9 @@ const Navbar = () => {
         <li>
           <Link to="/" onClick={closeMenu}>Home</Link>
         </li>
-        <li>
+        {/*<li>
           <Link to="/menu" onClick={closeMenu}>Menu</Link>
-        </li>
+        </li>*/}
         <li>
           <Link to="/cart" onClick={closeMenu}>Cart</Link>
         </li>
