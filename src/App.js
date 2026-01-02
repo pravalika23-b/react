@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Payment from "./pages/payment";
 import Restaurant from "./pages/Restaurant";
+import Footer from "./components/Footer";
 
 import { CartProvider } from "./context/CartContext";
 import { SearchProvider } from "./context/SearchContext";
