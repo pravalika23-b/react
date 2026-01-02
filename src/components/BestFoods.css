@@ -1,0 +1,64 @@
+.bigBox{
+    
+}
+.img1{
+    max-height: 300px;
+    max-width: 300px;
+}
+.img2{
+    max-height: 300px;
+    max-width: 300px;
+}
+.img3{
+    max-height: 300px;
+    max-width: 300px;
+}
+.head{
+    text-align: center;
+   
+}
+.smallBox{
+    display: inline-block;
+    padding: 2px;
+    color: white;
+ 
+}
+.box1{
+    padding: 10px;
+    background-color: #ff512f ;
+    margin: 20px;
+    border-radius: 10px;
+    
+
+}
+.box2{
+    padding: 10px;
+    background-color: #ff512f ;
+    margin: 20px;
+    border-radius: 10px;
+
+}
+.box3{
+    padding: 10px;
+    background-color: #ff512f ;
+    margin: 20px;
+    border-radius: 10px;
+
+}
+
+.box1:hover{
+    background-color: #f98770;
+}
+.box2:hover{
+    background-color: #f98770;
+}
+.box3:hover{
+    background-color: #f98770;
+}
+
+@media (min-width: 768px) {
+  .smallBox{
+    display: flex;
+    padding-left: 70px;
+  }
+}
